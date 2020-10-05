@@ -1,0 +1,20 @@
+<view class="container">
+  <t-clock text="{{time}}" fontSize="52"></t-clock>
+  <view wx:if="{{!againVisible}}">
+    <view class="stop">
+      <t-button type="change" size="mini" text="暂停" bindtap="clearTimer" wx:if="{{isStopStatus}}"></t-button>
+      <t-button type="change" size="mini" text="开始" bindtap="startTimer" wx:else></t-button>
+    </view>
+    <view class="abandon" bindtap="abandon">
+      <t-button size="mini" text="放弃"></t-button>
+    </view>
+  </view>
+  <view class="again" wx:else>
+    <t-button type="change" size="mini" text="再来一组" bindtap="againTimer"></t-button>
+  </view>
+  <t-confirm visible="{{confirmVisible}}" placeholder="放弃理由" bindconfirm="confirmAbandon" bindcancel="cancel">
+  </t-confirm>
+  <t-confirm visible="{{finishConfirmVisible}}" placeholder="完成了什么" bindconfirm="confirmFinish"
+    bindcancel="hideFinishConfirm">
+  </t-confirm>
+</view>

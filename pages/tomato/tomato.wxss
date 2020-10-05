@@ -1,0 +1,16 @@
+.container {
+  background: #f0f6f7;
+  height: 100vh;
+}
+
+.stop {
+  margin-top: 30rpx;
+}
+
+.abandon {
+  margin-top: 30rpx;
+}
+
+.again {
+  margin-top: 30rpx;
+}

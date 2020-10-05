@@ -1,0 +1,24 @@
+<view class="home-wrapper">
+  <scroll-view class="todoList" scroll-y="true">
+    <view class="item" wx:for="{{todoList}}" wx:key="id" wx:if="{{!item.completed}}">
+      <view class="select {{item.completed?'active':''}}" data-id="{{item.id}}" data-index="{{index}}"
+        bindtap="confirmFinish"></view>
+      <text bindtap="showUpdateConfirm" data-description="{{item.description}}"
+        data-id="{{item.id}}">{{item.description}}</text>
+    </view>
+  </scroll-view>
+  <t-button type="change" class="createButton" text="创建任务" bindtap="showCreateConfirm"></t-button>
+  <view class="tomato-wrapper">
+    <navigator url="/pages/tomato/tomato" class="tomato">
+      <view>
+        <t-clock text="点击开始闹钟"></t-clock>
+      </view>
+    </navigator>
+  </view>
+  <t-confirm placeholder="你要完成什么" visible="{{isShowCreateConfirm}}" bindconfirm="createTodo"
+    bindcancel="hideCreateConfirm">
+  </t-confirm>
+  <t-confirm placeholder="{{originDescription}}" visible="{{isShowUpdateConfirm}}" bindconfirm="updateTodo"
+    bindcancel="hideUpdateConfirm">
+  </t-confirm>
+</view>
