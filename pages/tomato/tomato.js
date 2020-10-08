@@ -14,23 +14,23 @@ Page({
 
   onShow: function () {
     this.startTimer();
-    http.post("/tomatoes").then(response => {
-      this.setData({ tomato: response.data.resource })
-    })
+    // http.post("/tomatoes").then(response => {
+    //   this.setData({ tomato: response.data.resource })
+    // })
   },
   onHide: function () {
     this.clearTimer();
-    http.put(`/tomatoes/${this.data.tomato.id}`, {
-      description: "退出放弃",
-      aborted: true
-    })
+    // http.put(`/tomatoes/${this.data.tomato.id}`, {
+    //   description: "退出放弃",
+    //   aborted: true
+    // })
   },
   onUnload: function () {
     this.clearTimer();
-    http.put(`/tomatoes/${this.data.tomato.id}`, {
-      description: "退出放弃",
-      aborted: true
-    })
+    // http.put(`/tomatoes/${this.data.tomato.id}`, {
+    //   description: "退出放弃",
+    //   aborted: true
+    // })
   },
   hideFinishConfirm() {
     this.setData({
@@ -39,7 +39,6 @@ Page({
   },
   confirmFinish(e) {
     const content = e.detail;
-    console.log(content)
     this.hideFinishConfirm();
   },
   convertSeconds() {
@@ -61,9 +60,9 @@ Page({
     this.setData({
       againVisible: false
     })
-    http.post("/tomatoes").then(response => {
-      this.setData({ tomato: response.data.resource })
-    })
+    // http.post("/tomatoes").then(response => {
+    //   this.setData({ tomato: response.data.resource })
+    // })
   },
   startTimer() {
     this.convertSeconds();
@@ -87,15 +86,18 @@ Page({
     this.timer = null;
   },
   confirmAbandon(e) {
-    const content = e.detail;
-    http.put(`/tomatoes/${this.data.tomato.id}`, {
-      description: content,
-      aborted: true
-    }).then(() => {
-      wx.navigateBack({
-        to: -1,
-      })
+    wx.navigateBack({
+      to: -1,
     })
+    // const content = e.detail;
+    // http.put(`/tomatoes/${this.data.tomato.id}`, {
+    //   description: content,
+    //   aborted: true
+    // }).then(() => {
+    //   wx.navigateBack({
+    //     to: -1,
+    //   })
+    // })
   },
   abandon() {
     this.clearTimer();

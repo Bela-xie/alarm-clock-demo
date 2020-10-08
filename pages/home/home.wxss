@@ -8,25 +8,32 @@
 
 .tomato-wrapper {
   flex: 1;
-  margin-top: 66rpx;
   padding: 0 28rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 44%;
+  box-sizing: border-box;
 }
 
 .tomato-wrapper>.tomato {
-  background: #eef7f6;
   border-radius: 8rpx;
-  height: 473rpx;
+  /* height: 473rpx; */
+  height: 100%;
+  background: #eef7f6;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: #eef7f6;
   box-shadow: 0 2rpx 8rpx 0 rgba(0, 0, 0, 0.1);
 }
 
-.createButton {
+.tomato-wrapper>.createButton {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: 580rpx;
+  top: 0;
+  transform: translate(-50%, -50%);
 }
 
 .todoList {
@@ -34,8 +41,8 @@
   color: #333;
   font-size: 28rpx;
   box-sizing: border-box;
-  max-height: 552rpx;
-  min-height: 552rpx;
+  /* height: 552rpx; */
+  height: 50%;
 }
 
 .todoList .item {

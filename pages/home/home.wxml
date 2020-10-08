@@ -7,13 +7,13 @@
         data-id="{{item.id}}">{{item.description}}</text>
     </view>
   </scroll-view>
-  <t-button type="change" class="createButton" text="创建任务" bindtap="showCreateConfirm"></t-button>
   <view class="tomato-wrapper">
-    <navigator url="/pages/tomato/tomato" class="tomato">
-      <view>
+    <t-button type="change" class="createButton" text="创建任务" bindtap="showCreateConfirm"></t-button>
+    <view class="tomato">
+      <navigator url="/pages/tomato/tomato" hover-class="none">
         <t-clock text="点击开始闹钟"></t-clock>
-      </view>
-    </navigator>
+      </navigator>
+    </view>
   </view>
   <t-confirm placeholder="你要完成什么" visible="{{isShowCreateConfirm}}" bindconfirm="createTodo"
     bindcancel="hideCreateConfirm">

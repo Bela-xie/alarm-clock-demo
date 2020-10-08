@@ -4,13 +4,13 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    placeholder:{
-      type:String,
-      value:""
+    placeholder: {
+      type: String,
+      value: ""
     },
-    visible:{
-      type:Boolean,
-      value:false
+    visible: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -18,21 +18,23 @@ Component({
    * 组件的初始数据
    */
   data: {
-     inputValue:""
+    inputValue: ""
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    watchValue(e){
-      this.setData({inputValue:e.detail.value})
+    watchValue(e) {
+      this.setData({ inputValue: e.detail.value })
     },
-    confirm(){
-      this.triggerEvent("confirm",this.data.inputValue)
+    confirm() {
+      this.triggerEvent("confirm", this.data.inputValue)
+      this.data.inputValue = ""
     },
-    cancel(){
-      this.triggerEvent("cancel","取消")
+    cancel() {
+      this.triggerEvent("cancel", "取消")
+      this.data.inputValue = ""
     }
-  }
+  },
 })

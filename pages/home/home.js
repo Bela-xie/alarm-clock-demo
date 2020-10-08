@@ -11,13 +11,13 @@ Page({
     originDescription: "",
     updateId: "",
     todoList: [
-      { id: 1, description: "kjdjfei", completed: false },
-      { id: 2, description: "kjdjfei", completed: false },
-      { id: 3, description: "kjdjfei", completed: false },
-      { id: 4, description: "kjdjfei", completed: false },
-      { id: 5, description: "kjdjfei", completed: false },
-      { id: 6, description: "kjdjfei", completed: false },
-      { id: 7, description: "kjdjfei", completed: false },
+      { id: 1, description: "洗衣服", completed: false },
+      { id: 2, description: "写一篇文章", completed: false },
+      { id: 3, description: "吃饭", completed: false },
+      { id: 4, description: "完成数学作业", completed: false },
+      { id: 5, description: "扫地", completed: false },
+      { id: 6, description: "收拾房间", completed: false },
+      { id: 7, description: "完成语文作业", completed: false },
     ]
   },
   onShow: function () {
@@ -56,16 +56,27 @@ Page({
   },
   createTodo(event) {
     const description = event.detail;
+    // if (description) {
+    //   http.post("/todos", {
+    //     description,
+    //     completed: false
+    //   }).then(response => {
+    //     const newTodo = [response.data.resource]
+    //     const newTodoList = newTodo.concat(this.data.todoList)
+    //     this.setData({ todoList: newTodoList })
+    //     this.hideCreateConfirm();
+    //   })
+    // } 
     if (description) {
-      http.post("/todos", {
+      let list = this.data.todoList;
+      const newTodo = {
+        id: list.length + 1,
         description,
         completed: false
-      }).then(response => {
-        const newTodo = [response.data.resource]
-        const newTodoList = newTodo.concat(this.data.todoList)
-        this.setData({ todoList: newTodoList })
-        this.hideCreateConfirm();
-      })
+      }
+      const newTodoList = [newTodo].concat(this.data.todoList)
+      this.setData({ todoList: newTodoList })
+      this.hideCreateConfirm();
     } else {
       wx.showToast({
         title: '你还没有输入内容！',
@@ -74,15 +85,26 @@ Page({
     }
   },
   updateTodo(event) {
-    const description = event.detail;
+    let description = event.detail;
+    // if (description) {
+    //   http.put(`/todos/${this.data.updateId}`, {
+    //     description
+    //   }).then(response => {
+    //     const todo = response.data.resource;
+    //     this.data.todoList[index] = todo;
+    // this.hideUpdateConfirm();
+    //     this.setData({ todoList: this.data.todoList })
+    //   })
+    // } 
     if (description) {
-      http.put(`/todos/${this.data.updateId}`, {
-        description
-      }).then(response => {
-        const todo = response.data.resource;
-        this.data.todoList[index] = todo;
-        this.setData({ todoList: this.data.todoList })
-      })
+      for (let i = 0; i < this.data.todoList.length; i++) {
+        if (this.data.todoList[i].id === this.data.updateId) {
+          this.data.todoList[i].description = description;
+          this.setData({ todoList: this.data.todoList })
+          this.hideUpdateConfirm();
+          return
+        }
+      }
     } else {
       wx.showToast({
         title: '你还没有输入内容！',

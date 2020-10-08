@@ -19,20 +19,25 @@
 
   <scroll-view scroll-y="true" class="lists" wx:if="{{tab==='tomato'}}">
     <view class="item" wx:for="{{tomatoes}}" wx:for-index="key" wx:key="key">
-      <wxs src="../../utils/formattor.wxs" module="formattor"></wxs>
-      <view class="time">{{formattor.monthFormat(key)}}</view>
+      <!-- <wxs src="../../utils/formattor.wxs" module="formattor"></wxs> -->
+      <!-- <view class="time">{{formattor.monthFormat(key)}}</view> -->
+      <view class="time">{{key}}</view>
       <view class="content" wx:for="{{tomatoes[key]}}" wx:for-index="index" wx:key="index">
-        <text>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text>
+        <!-- <text>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text> -->
+        <text>{{item.created_at}}</text>
         <view class="detail">{{item.description}}</view>
       </view>
     </view>
   </scroll-view>
+
   <scroll-view scroll-y="true" class="lists" wx:if="{{tab==='task'}}">
     <view class="item" wx:for="{{todos}}" wx:for-index="key" wx:key="key">
-      <wxs src="../../utils/formattor.wxs" module="formattor"></wxs>
-      <view class="time">{{formattor.monthFormat(key)}}</view>
+      <!-- <wxs src="../../utils/formattor.wxs" module="formattor"></wxs> -->
+      <!-- <view class="time">{{formattor.monthFormat(key)}}</view> -->
+      <view class="time">{{key}}</view>
       <view class="content" wx:for="{{todos[key]}}" wx:for-index="index" wx:key="index">
-        <text>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text>
+        <!-- <text>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text> -->
+        <text>{{item.created_at}}</text>
         <view class="detail">{{item.description}}</view>
       </view>
     </view>

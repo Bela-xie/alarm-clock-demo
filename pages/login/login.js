@@ -36,5 +36,11 @@ Page({
   saveMessage(response) {
     wx.setStorageSync('me', response.data.resource)
     wx.setStorageSync('X-token', response.header["X-token"])
+  },
+  //假的登录
+  fakeLogin() {
+    wx.reLaunch({
+      url: '/pages/home/home',
+    })
   }
 })
