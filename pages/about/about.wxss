@@ -1,0 +1,23 @@
+.about-container {
+  background: #F6F6F6;
+  height: 100vh;
+}
+
+.about-container .title {
+  color: #f6705a;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 44rpx;
+  text-align: center;
+}
+
+.about-container .title image {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.about-container text {
+  font-size: 30rpx;
+  margin: 0;
+  padding: 0;
+}
